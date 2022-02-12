@@ -38,7 +38,8 @@
       stamina_consumption(1);
 
 
-      echo '<br>結果<br><br>';
+      echo '<br>結果<br>';
+      echo '<input type="button" name="b_" value="再試行" onclick="OnButtonClick(0);"><br>';
 
       $count = array();
       $dice_count_max=array();
@@ -76,6 +77,16 @@
       read_array( "user/".$_COOKIE["login_id"]."/record" , $user_record );
       echo "<br><br>出目の合計:".$sum."<br>";
       echo "出目の合計自己ベスト:".$user_record["0-sum"];
+
+
+      $tweet_text = 'サイコロを10個振る 記録: '.$sum.'';
+      if($user_record["0-sum"]<$sum){
+        echo '<br>記録更新！';
+        $tweet_text = $tweet_text.' 記録更新！';
+      }
+
+      echo '<br><a href="https://twitter.com/intent/tweet?text='.$tweet_text.' http://sei-gen.lsv.jp/luck/index.php" target="_blank">ツイートする</a><br>';
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -231,6 +242,15 @@
 
       echo '記録: '.$count_1.'文字<br>';
       echo '自己ベスト: '.$user_record["1-long"];
+
+  
+      $tweet_text = '魑魅魍魎が完成するまで 記録: '.$count_1.'文字';
+      if($user_record["1-long"]<$count_1){
+        echo '<br>記録更新！';
+        $tweet_text = $tweet_text.' 記録更新！';
+      }
+
+      echo '<br><a href="https://twitter.com/intent/tweet?text='.$tweet_text.' http://sei-gen.lsv.jp/luck/index.php" target="_blank">ツイートする</a><br>';
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -408,6 +428,15 @@
 
       echo '記録: '.$count_2.'<br>';
       echo '自己ベスト: '.$user_record["2-max_grid"];
+
+      $tweet_text = '9×9をランダムウォーク 記録: '.$count_2.'';
+      if($user_record["2-max_grid"]<$count_2){
+        echo '<br>記録更新！';
+        $tweet_text = $tweet_text.' 記録更新！';
+      }
+
+      echo '<br><a href="https://twitter.com/intent/tweet?text='.$tweet_text.' http://sei-gen.lsv.jp/luck/index.php" target="_blank">ツイートする</a><br>';
+
 
 
 
