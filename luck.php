@@ -75,6 +75,8 @@
 
       //記録の読み込み
       read_array( "user/".$_COOKIE["login_id"]."/record" , $user_record );
+      read_array( "record/record_0" , $all_user_record );
+      
       echo "<br><br>出目の合計:".$sum."<br>";
       echo "出目の合計自己ベスト:".$user_record["0-sum"];
 
@@ -97,7 +99,7 @@
       //個人記録
       //記録の読み込み
       read_array( "user/".$_COOKIE["login_id"]."/record" , $user_record );
-      read_array( "record/record_0" , $all_user_record );
+      
 
       //バージョンアップ
       if($user_record["0-sum"]>1000){
