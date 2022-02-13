@@ -76,9 +76,10 @@
       //記録の読み込み
       read_array( "user/".$_COOKIE["login_id"]."/record" , $user_record );
       read_array( "record/record_0" , $all_user_record );
-      
+
       echo "<br><br>出目の合計:".$sum."<br>";
-      echo "出目の合計自己ベスト:".$user_record["0-sum"];
+      echo "出目の合計自己ベスト:".$user_record["0-sum"]."<br>";
+      echo "世界記録".$all_user_record["0-total-highest"];
 
 
       $tweet_text = 'サイコロを10個振る 記録: '.$sum.'';
@@ -253,7 +254,8 @@
 
 
       echo '記録: '.$count_1.'文字<br>';
-      echo '自己ベスト: '.$user_record["1-long"];
+      echo '自己ベスト: '.$user_record["1-long"]."<br>";
+      echo '世界記録: '.$all_user_record["1-total-highest"];
 
   
       $tweet_text = '魑魅魍魎が完成するまで 記録: '.$count_1.'文字';
@@ -448,7 +450,8 @@
 
 
       echo '記録: '.$count_2.'<br>';
-      echo '自己ベスト: '.$user_record["2-max_grid"];
+      echo '自己ベスト: '.$user_record["2-max_grid"].'<br>';
+      echo '世界記録: '.$all_user_record["2-max_grid-highest"];
 
       $tweet_text = '9×9をランダムウォーク 記録: '.$count_2.'';
       
