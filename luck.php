@@ -80,7 +80,11 @@
 
 
       $tweet_text = 'サイコロを10個振る 記録: '.$sum.'';
-      if($user_record["0-sum"]<$sum){
+      if($all_user_record["0-total-highest"]<$sum){
+        echo '<br>世界記録更新！';
+        $tweet_text = $tweet_text.' 世界記録更新！';
+      }
+      else if($user_record["0-sum"]<$sum){
         echo '<br>記録更新！';
         $tweet_text = $tweet_text.' 記録更新！';
       }
@@ -93,6 +97,7 @@
       //個人記録
       //記録の読み込み
       read_array( "user/".$_COOKIE["login_id"]."/record" , $user_record );
+      read_array( "record/record_0" , $all_user_record );
 
       //バージョンアップ
       if($user_record["0-sum"]>1000){
@@ -131,9 +136,13 @@
 
       //ユーザー全体の記録
       //記録の読み込み
-      read_array( "record/record_0" , $all_user_record );
+      //read_array( "record/record_0" , $all_user_record ); すでに読み込み済
 
-      //最高出目合計記録（0-total-xyz） id:日付
+      //最高記録
+      $all_user_record["0-total-highest"] = max($all_user_record["0-total-highest"],$sum);
+
+
+      //出目合計記録（0-total-xyz） id:日付
       //50以上で保存
       if($sum>=50){
         $all_user_record["0-total-".$sum][$_COOKIE["login_id"]][date('Y/m/d H:i:s',time())]++;
@@ -238,6 +247,7 @@
 
       //記録の読み込み
       read_array( "user/".$_COOKIE["login_id"]."/record" , $user_record );
+      read_array( "record/record_1" , $all_user_record );
 
 
       echo '記録: '.$count_1.'文字<br>';
@@ -245,7 +255,12 @@
 
   
       $tweet_text = '魑魅魍魎が完成するまで 記録: '.$count_1.'文字';
-      if($user_record["1-long"]<$count_1){
+
+      if($all_user_record["1-total-highest"]<$count_1){
+        echo '<br>世界記録更新！';
+        $tweet_text = $tweet_text.' 世界記録更新！';
+      }
+      else if($user_record["1-long"]<$count_1){
         echo '<br>記録更新！';
         $tweet_text = $tweet_text.' 記録更新！';
       }
@@ -273,7 +288,10 @@
 
       //ユーザー全体の記録
       //記録の読み込み
-      read_array( "record/record_1" , $all_user_record );
+      //read_array( "record/record_1" , $all_user_record ); すでに読み込み済
+
+      //最高記録
+      $all_user_record["1-total-highest"] = max($all_user_record["1-total-highest"],$count_1);
 
       
 
@@ -424,13 +442,19 @@
 
       //記録の読み込み
       read_array( "user/".$_COOKIE["login_id"]."/record" , $user_record );
+      read_array( "record/record_2" , $all_user_record );
 
 
       echo '記録: '.$count_2.'<br>';
       echo '自己ベスト: '.$user_record["2-max_grid"];
 
       $tweet_text = '9×9をランダムウォーク 記録: '.$count_2.'';
-      if($user_record["2-max_grid"]<$count_2){
+      
+      if($all_user_record["2-max_grid-highest"]<$count_2){
+        echo '<br>世界記録更新！';
+        $tweet_text = $tweet_text.' 世界記録更新！';
+      }
+      else if($user_record["2-max_grid"]<$count_2){
         echo '<br>記録更新！';
         $tweet_text = $tweet_text.' 記録更新！';
       }
@@ -477,7 +501,10 @@
 
       //ユーザー全体の記録
       //記録の読み込み
-      read_array( "record/record_2" , $all_user_record );
+      //read_array( "record/record_2" , $all_user_record ); すでに読み込み済
+
+      //最高記録
+      $all_user_record["2-max_grid-highest"] = max($all_user_record["2-max_grid-highest"],$count_2);
 
       
 
